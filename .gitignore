@@ -1,0 +1,66 @@
+# ─────────────────────────────
+# Python
+# ─────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyd
+*.pdb
+*.pkl
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+
+# Byte-compiled / optimized
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment files (keep secrets out of git)
+.env
+.env.*
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# ─────────────────────────────
+# IDE / Editor files
+# ─────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─────────────────────────────
+# OS files
+# ─────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─────────────────────────────
+# Tools / Frameworks
+# ─────────────────────────────
+# Poetry
+.poetry/
+
+# PyInstaller
+*.spec
+
+# mypy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+
+# coverage
+htmlcov/
+.coverage*
+.cache/
