@@ -27,9 +27,24 @@ llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash', temperature=0.9)
 
 agent = create_agent(llm, [add_numbers, subtract_numbers])
 
-result = agent.invoke({
-    "messages": [{"role": "user", "content": "What is 12 - 5?"}]
-})
+# Conversation loop to keep the agent interactive by maintaining full chat history
+history = []
 
-print(result["messages"][-1].content)
+print("Type 'exit' to quit.\n")
+
+while True:
+    user_input = input("You: ")
+
+    if user_input.lower() in ["exit", "quit"]:
+        break
+
+    history.append({"role": "user", "content": user_input})
+
+    result = agent.invoke({"messages": history})
+
+    reply = result["messages"][-1].content
+    print("Agent:", reply)
+
+    history.append({"role": "assistant", "content": reply})
+
 
