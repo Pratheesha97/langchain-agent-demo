@@ -6,7 +6,6 @@ import re
 import getpass
 import os
 
-
 load_dotenv(find_dotenv(), override=True)
 
 if 'GOOGLE_API_KEY' not in os.environ:
@@ -18,9 +17,15 @@ def add_numbers(query: str) -> str:
     nums = re.findall(r"\d+", query)
     return str(int(nums[0]) + int(nums[1]))
 
+@tool
+def subtract_numbers(query: str) -> str:
+    """Subtract numbers."""
+    nums = re.findall(r"\d+", query)
+    return str(int(nums[0]) - int(nums[1]))
+
 llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash', temperature=0.9)
 
-agent = create_agent(llm, [add_numbers])
+agent = create_agent(llm, [add_numbers, subtract_numbers])
 
 result = agent.invoke({
     "messages": [{"role": "user", "content": "What is 12 - 5?"}]
